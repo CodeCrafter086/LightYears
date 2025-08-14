@@ -1,0 +1,971 @@
+<!DOCTYPE html>
+<html>
+<head>
+
+<style>
+* {
+  box-sizing: border-box;
+}
+
+body {
+  font-family: Lucida Sans;
+  padding: 10px;
+  background: #f1f1f1;
+}
+
+/* Header/Blog Title */
+.header {
+  padding: 30px;
+  text-align: center;
+  background: white;
+}
+
+.header h1 {
+  font-size: 50px;
+}
+
+.custom-select {
+  background: none;
+  border: none;
+  font-size: 1rem;
+  font-family: Lucida Sans;
+  color: #333;
+  padding: 5px;
+  appearance: none;
+  outline: none;
+}
+
+.label {
+  font-weight: 600;
+  margin-right: 10px;
+  font-size: 1rem;
+}
+
+
+/* Style the top navigation bar */
+.topnav {
+  overflow: hidden;
+  background-color: #1A4959;
+}
+
+/* Style the topnav links */
+.topnav a {
+  float: left;
+  display: block;
+  color: #f2f2f2;
+  text-align: center;
+  padding: 14px 16px;
+  text-decoration: none;
+}
+
+/* Change color on hover */
+.topnav a:hover {
+  background-color: #3697B8;
+  color: black;
+}
+
+/* Create two unequal columns that floats next to each other */
+/* Left column */
+.leftcolumn {   
+  float: left;
+  width: 75%;
+}
+
+/* Right column */
+.rightcolumn {
+  float: left;
+  width: 25%;
+  background-color: #f1f1f1;
+  padding-left: 20px;
+}
+
+/* Add image */
+.addimg {
+  background-color: white;
+  width: 100%;
+  padding: 18px;
+  
+}
+
+/* Add a card effect for articles */
+.card {
+  background-color: white;
+  padding: 20px;
+  margin-top: 20px;
+}
+
+/* Clear floats after the columns */
+.row::after {
+  content: "";
+  display: table;
+  clear: both;
+}
+
+
+
+.tab-container {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(260px, 1fr));
+      gap: 20px;
+    }
+
+    .tab {
+      background: linear-gradient(to bottom, #CCF5FF, #CCF5FF);
+      border-radius: 12px;
+      box-shadow: 0 8px 16px rgba(0,0,0,0.05);
+      padding: 24px;
+      transition: all 0.3s ease;
+      border: 2px solid #e0e6ed;
+    }
+
+    .tab:hover {
+      transform: translateY(-4px);
+      box-shadow: 0 12px 20px rgba(0,0,0,0.08);
+      border-color: #c0c7d6;
+    }
+
+    .tab h3 {
+      margin-top: 0;
+      font-size: 20px;
+      color: #374151;
+    }
+
+    .tab p {
+      font-size: 15px;
+      line-height: 1.5;
+      color: #374151;
+      margin-bottom: 0;
+    }
+
+   .subscription-note {
+      background: linear-gradient(to bottom, #CBE1E6, white);
+      border-radius: 12px;
+      box-shadow: 0 8px 16px rgba(0,0,0,0.05);
+      padding: 24px;
+      transition: all 0.3s ease;
+      border: 2px solid #e0e6ed;
+
+    }
+
+
+
+.capsule-button {
+  display: inline-block;
+  padding: 0.75em 1.5em;
+  background-color: #1A4959; /* Deep cosmic tone */
+  color: #F5F5F5;
+  font-family: 'Inter', sans-serif;
+  font-size: 1rem;
+  text-decoration: none;
+  border-radius: 6px;
+  transition: background-color 0.3s ease;
+}
+
+.capsule-button:hover {
+  background-color: #215E73; /* Slightly lighter on hover */
+}
+
+
+
+    .button {
+      background: linear-gradient(to bottom, #CCF5FF, #CCF5FF);
+      padding: 0.6rem 1rem;
+      border-radius: 6px;
+      cursor: pointer;
+      margin-bottom: 1rem;
+    }
+
+    .destinations {
+      display: none;
+      margin-top: 2rem;
+    }
+
+    .region {
+      background: #fff;
+      padding: 1rem;
+      margin: 1rem auto;
+      max-width: 300px;
+      border-radius: 8px;
+      box-shadow: 0 2px 6px rgba(0,0,0,0.1);
+      text-align: left;
+    }
+
+
+
+    .archetype {
+      font-size: 0.8rem;
+      color: #888;
+      text-transform: uppercase;
+    }
+
+    .destination {
+      font-size: 1.1rem;
+      font-weight: bold;
+      margin: 0.3rem 0;
+    }
+
+    .intro {
+      font-size: 0.9rem;
+      color: #555;
+    }
+
+
+    
+    .container {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 2rem;
+      max-width: 1500px;
+      width: 100%;
+    }
+
+    .contact-form, .faq {
+      flex: 1 1 500px;
+      background: #fff;
+      padding: 2rem;
+      border-radius: 12px;
+      box-shadow: 0 4px 20px rgba(0,0,0,0.05);
+    }
+
+    .contact-form h2,
+    .faq h2 {
+      color: #215E73;
+      font-size: 1.5rem;
+      margin-bottom: 1rem;
+    }
+
+    .contact-form label {
+      display: block;
+      margin-top: 1rem;
+      font-weight: 600;
+    }
+
+    .contact-form input,
+    .contact-form textarea {
+      width: 100%;
+      padding: 0.75rem;
+      margin-top: 0.5rem;
+      border: 1px solid #ccc;
+      border-radius: 8px;
+      font-size: 1rem;
+      font-family: cambria;
+    }
+
+    .contact-form button {
+      margin-top: 1.5rem;
+      padding: 0.75rem 1.5rem;
+      background-color: #1A4959;
+      color: #fff;
+      border: none;
+      border-radius: 8px;
+      font-size: 1rem;
+      cursor: pointer;
+      transition: background 0.3s ease;
+    }
+
+    .contact-form button:hover {
+      background-color: #215E73;
+    }
+
+
+    .faq-item {
+      margin-bottom: 1.5rem;
+    }
+
+    .faq-item h3 {
+      font-size: 1rem;
+      margin-bottom: 0.5rem;
+      color: #333;
+    }
+
+    .faq-item p {
+      margin: 0;
+      color: #555;
+      line-height: 1.5;
+    }
+
+    @media (max-width: 768px) {
+      .container {
+        flex-direction: column;
+      }
+    }
+
+
+   
+/* Footer */
+.footer {
+  padding: 20px;
+  text-align: center;
+  background: #1A4959;
+  color: white;
+  margin-top: 20px;
+}
+
+/* Responsive layout - when the screen is less than 800px wide, make the two columns stack on top of each other instead of next to each other */
+@media screen and (max-width: 800px) {
+  .leftcolumn, .rightcolumn {   
+    width: 100%;
+    padding: 0;
+  }
+}
+
+/* Responsive layout - when the screen is less than 400px wide, make the navigation links stack on top of each other instead of next to each other */
+@media screen and (max-width: 400px) {
+  .topnav a {
+    float: none;
+    width: 100%;
+  }
+}
+</style>
+</head>
+<body>
+
+<div class="header">
+  
+<form {
+style="position: absolute; top: 38px; right: 30px;"
+}>
+
+  <label for="country" class="label"></label>
+  <select id="country" name="country" class="custom-select">
+    <option value="">Select your country ▾</option>
+    <option value="india"> India 🇮🇳</option>
+    <option value="japan"> Japan 🇯🇵</option>
+    <option value="france"> France 🇫🇷</option>
+    <option value="brazil"> Brazil 🇧🇷</option>
+    <option value="australia"> Australia 🇦🇺</option>
+    <option value="usa"> United States 🇺🇸</option>
+    <option value="south-africa"> South Africa 🇿🇦</option>
+    <option value="italy"> Italy 🇮🇹</option>
+  </select>
+
+</form>
+  <img src = "images\lightyears logo.png" alt = "website logo" style="float:center; width:380px; height:auto;">
+
+</div>
+
+<div class="topnav">
+  <a href="#home">Home</a>
+  <a href="#working">How It Works</a>
+  <a href="#destinations">Destinations</a>
+  <a href="#plans">Plans</a>    
+  <a href="#categories">Categories</a> 
+  <a href="#aboutus">About Us</a>
+  <a href="#contact">Contact</a>
+  <a href="#contact">FAQ</a>
+</div>
+
+<div class="row">
+  <div class="leftcolumn">
+<section id="aboutus">   
+ <div class="card">
+     
+ <h2> <i>Lightyears:</i> For Journeys That Defy Gravity. </h2>
+      <h4><i> Built for the ones who chase horizons. </i></h4>
+     
+  <div class= "fakeimg" style="height:340px;">
+<img src= "images\travel bg2.png"
+style= "width: 1050px; height: 320px; border-radius: 7px" alt="travel background"> 
+                                                                                                       
+</div>                                 
+                           
+                         
+      <p>At <i>Lightyears,</i> we believe that every journey should reflect the traveler—not just the destination.
+<br><br>
+<strong><i>Lightyears</i> helps you plan, personalize, and experience travel like never before.</strong><br>
+Whether you're dreaming of the Alps or the Amazon, we tailor every journey to your style.
+From hidden gems to iconic landmarks, we curate experiences that reflect who you are. We design journeys with soul, not scripts -
+No pre-packaged paths ~ just authentic experiences, made for you.
+
+</p>
+   
+
+      <p>
+We go beyond booking and blueprints.
+We craft immersive experiences using smart technology, composed insights, and a deep understanding of what makes travel meaningful.
+With <em><b> Lightyears, </b></em> you get more than a trip—you get a story worth telling.
+<br><br>
+<b>Travel beyond time. Discover with <em> LightYears</em> ~
+A virtual companion for journeys imagined and real.</b>
+
+</p>
+
+    </div>
+</section>
+
+    <div class="card">
+    
+        <h2>💫 What <i>LightYears </i>Offers</h2>
+      <h4>Your journey deserves more than schedules - it deserves soul, style, and seamless support.</h4>
+     
+
+   <p><em><b>Our Signature Offerings:-</em></b>
+  <ul>
+    <li>
+      <strong>📘 Curated Guidebooks:</strong>
+      Thoughtfully crafted travel narratives, cultural insights, and local secrets - designed to inspire, not just inform, and to help you feel the soul of a place through story, not just sight.
+</li>
+
+    </li><br>
+    <li>
+      <strong>🗺️ Interactive Maps: </strong>
+       Visually elegant, responsive maps that highlight not just where to go, but why it matters.
+    </li><br>
+    <li>
+      <strong>🤖 Personalized Virtual Travel Companion:</strong>
+    Your AI-powered co-traveler - adaptive, intuitive, and emotionally attuned to your travel style. Think of it as your poetic navigator.
+    </li><br>
+    <li>
+      <strong>🎒<i> LightYears</i> Capsule:</strong>
+    A thoughtfully assembled physical kit of travel must-haves - designed to support your journey with style, comfort, and intention.
+    </li><br>
+  </ul>
+
+</p>
+
+</p>
+    </div>
+
+
+<div class="card">
+<section id="working">
+
+<h2>🚀 LightYears: How It Works</h2>
+
+  <div class="tab-container">
+    <div class="tab">
+  <h3>1. Share Travel Vision</h3>
+  <p>Customers describe their ideal journey—mood, destinations, purpose, or timing.</p>
+</div>
+
+    <div class="tab">
+     <h3>2. Route Summary (Optional)</h3>
+  <p>LightYears processes the input and provides optimized travel routes when applicable to the plan.</p>
+</div>
+
+    <div class="tab">
+      <h3>3. Booking Options (Optional)</h3>
+  <p>Customers can book flights, stays, and experiences through the website or app, depending on plan type.</p>
+</div>
+
+
+    <div class="tab">
+      <h3>4. Capsule Delivery</h3>
+  <p>The LightYears Capsule is shipped to the customer’s address, including a guidebook, map, and curated travel essentials.</p>
+</div>
+
+    <div class="tab">
+      <h3>5. Virtual Travel Companion</h3>
+  <p>An AI powered assistant is assigned, accessible via the app and smartwatch—offering real-time guidance throughout the journey.</p>
+</div>
+
+<div class="subscription-note">
+    <p><em><h4>🛠️ Plans vary.<br></h4>
+ Some skip Steps 2 & 3—just bring your vision and we follow your lead.</em></p>
+  </div>
+  </div>
+
+</div>
+</section>
+
+
+<div class="card">
+<section id="plans">
+<h2> 🕊️ Shape Your Journey </h2>
+<p>
+
+<em><strong>LightYears </strong></em> reimagines travel for every body and every sense. Each tier offers intuitive design, audio-first tools, and tactile capsule kits—so your journey begins with what feels right, not just what looks good.
+
+<br><br>
+Step into the <em><strong> LightYears </strong></em> universe. Here, every traveler is a character, every tier a chapter. Our capsule kits and guidebooks are crafted like mythic scrolls—layered with archetypes, sensory cues, and emotional maps. <b> Begin your story </b> where feeling leads.
+
+<br>
+
+<br><br>
+
+<center>
+<a href="LightYears_Subscription_Tiers.html" class="capsule-button" target="_blank">
+  Begin Your Story
+</a>
+</center>
+
+</div>
+
+
+
+<br>
+
+
+
+  </div>
+
+<div class="rightcolumn">
+
+<section id="destinations">
+    <div class="card">
+      <h2>🌍 Pick Your Pulse</h2>
+
+<!-- JAPAN -->
+<div class="button" onclick="showJapan()">🇯🇵 Japan</div>
+
+  <div id="japan" class="destinations">
+    <div class="region">
+    <div class="archetype">Stillness</div>
+    <div class="destination">Biei</div>
+    <div class="intro">Rolling fields, soft light, and quiet horizons.</div>
+  </div>
+
+    <div class="region">
+      <div class="archetype">Wonder</div>
+      <div class="destination">Yakushima Island</div>
+      <div class="intro">Moss-covered giants and rain-fed dreams.</div>
+    </div>
+    <div class="region">
+      <div class="archetype">Connection</div>
+      <div class="destination">Kurashiki</div>
+      <div class="intro">Canals and cloth, where stories are woven.</div>
+    </div>
+    <div class="region">
+      <div class="archetype">Transformation</div>
+      <div class="destination">Mount Daisen</div>
+      <div class="intro">A climb through shifting seasons and sacred paths.</div>
+    </div>
+    <div class="region">
+      <div class="archetype">Nostalgia</div>
+      <div class="destination">Kanazawa</div>
+      <div class="intro">Gold leaf and quiet gardens echoing old grace.</div>
+    </div>
+    <div class="region">
+      <div class="archetype">Momentum</div>
+      <div class="destination">Tokyo</div>
+      <div class="intro">Neon veins and layered lives in constant motion.</div>
+    </div>
+  </div>
+
+<!-- INDIA -->
+<div class="button" onclick="showIndia()">🇮🇳 India</div>
+
+<div id="india" class="destinations">
+  <div class="region">
+    <div class="archetype">Connection</div>
+    <div class="destination">Kutch</div>
+    <div class="intro">Salt plains, handwoven threads, and shared silence.</div>
+  </div>
+  <div class="region">
+    <div class="archetype">Transformation</div>
+    <div class="destination">Spiti Valley</div>
+    <div class="intro">Stark beauty and altitude shifts.</div>
+  </div>
+  <div class="region">
+    <div class="archetype">Nostalgia</div>
+    <div class="destination">Pondicherry</div>
+    <div class="intro">Faded French facades and sea breeze.</div>
+  </div>
+  <div class="region">
+    <div class="archetype">Stillness</div>
+    <div class="destination">Chilika Lake</div>
+    <div class="intro">Brackish waters, drifting birds, and horizon quiet.</div>
+  </div>
+  <div class="region">
+    <div class="archetype">Wonder</div>
+    <div class="destination">Meghalaya</div>
+    <div class="intro">Living root bridges and monsoon mist.</div>
+  </div>
+  <div class="region">
+    <div class="archetype">Momentum</div>
+    <div class="destination">Mumbai</div>
+    <div class="intro">A city that pulses with layered speed.</div>
+  </div>
+</div>
+  
+
+<!-- SOUTH KOREA -->
+<div class="button" onclick="showSouthKorea()">🇰🇷 South Korea</div>
+
+
+<div id="southkorea" class="destinations">
+  <div class="region"><div class="archetype">Stillness</div><div class="destination">Boseong</div><div class="intro">Tea fields folded in morning mist.</div></div>
+  <div class="region"><div class="archetype">Wonder</div><div class="destination">Jeju Island</div><div class="intro">Volcanic shores and lava tubes.</div></div>
+  <div class="region"><div class="archetype">Connection</div><div class="destination">Gangneung</div><div class="intro">Sea breeze, poetry cafés, and coastal warmth.</div></div>
+  <div class="region"><div class="archetype">Transformation</div><div class="destination">Seoraksan</div><div class="intro">Granite peaks and seasonal shifts.</div></div>
+  <div class="region"><div class="archetype">Nostalgia</div><div class="destination">Gyeongju</div><div class="intro">Echoes of dynasties and stone tombs.</div></div>
+  <div class="region"><div class="archetype">Momentum</div><div class="destination">Seoul</div><div class="intro">Neon veins and layered lives in motion.</div></div>
+</div>
+
+<!-- SCOTLAND -->
+
+
+<div class="button" onclick="showScotland()">🏴 Scotland</div>
+
+<div id="scotland" class="destinations">
+  <div class="region"><div class="archetype">Stillness</div><div class="destination">Isle of Skye</div><div class="intro">Fog, cliffs, and quiet lochs.</div></div>
+  <div class="region"><div class="archetype">Wonder</div><div class="destination">Fairy Pools</div><div class="intro">Crystal streams in mythic terrain.</div></div>
+  <div class="region"><div class="archetype">Connection</div><div class="destination">Edinburgh</div><div class="intro">Stone streets and shared stories.</div></div>
+  <div class="region"><div class="archetype">Transformation</div><div class="destination">Cairngorms</div><div class="intro">Wild paths and weathered resolve.</div></div>
+  <div class="region"><div class="archetype">Nostalgia</div><div class="destination">Glencoe</div><div class="intro">A valley steeped in memory and mist.</div></div>
+  <div class="region"><div class="archetype">Momentum</div><div class="destination">Glasgow</div><div class="intro">Art, grit, and urban rhythm.</div></div>
+</div>
+
+<!-- SWITZERLAND -->
+
+<div class="button" onclick="showSwitzerland()">🇨🇭 Switzerland</div>
+
+<div id="switzerland" class="destinations">
+  <div class="region"><div class="archetype">Stillness</div><div class="destination">Lauterbrunnen</div><div class="intro">Waterfalls whispering into alpine silence.</div></div>
+  <div class="region"><div class="archetype">Wonder</div><div class="destination">Zermatt</div><div class="intro">Matterhorn majesty and glacier light.</div></div>
+  <div class="region"><div class="archetype">Connection</div><div class="destination">Lucerne</div><div class="intro">Lake reflections and shared fondue.</div></div>
+  <div class="region"><div class="archetype">Transformation</div><div class="destination">Jungfrau</div><div class="intro">Climbing through cloud and ice.</div></div>
+  <div class="region"><div class="archetype">Nostalgia</div><div class="destination">Bern</div><div class="intro">Clock towers and cobbled time.</div></div>
+  <div class="region"><div class="archetype">Momentum</div><div class="destination">Zurich</div><div class="intro">Precision, pace, and modern flow.</div></div>
+</div>
+
+<!-- GERMANY -->
+
+<div class="button" onclick="showGermany()">🇩🇪 Germany</div>
+
+<div id="germany" class="destinations">
+  <div class="region"><div class="archetype">Stillness</div><div class="destination">Black Forest</div><div class="intro">Deep woods and quiet trails.</div></div>
+  <div class="region"><div class="archetype">Wonder</div><div class="destination">Saxon Switzerland</div><div class="intro">Sandstone towers and misty bridges.</div></div>
+  <div class="region"><div class="archetype">Connection</div><div class="destination">Heidelberg</div><div class="intro">River romance and student songs.</div></div>
+  <div class="region"><div class="archetype">Transformation</div><div class="destination">Bavarian Alps</div><div class="intro">Snow paths and mountain resolve.</div></div>
+  <div class="region"><div class="archetype">Nostalgia</div><div class="destination">Rothenburg</div><div class="intro">Medieval charm and candlelight.</div></div>
+  <div class="region"><div class="archetype">Momentum</div><div class="destination">Berlin</div><div class="intro">History reimagined in motion.</div></div>
+</div>
+
+<!-- PORTUGAL -->
+
+<div class="button" onclick="showPortugal()">🇵🇹 Portugal</div>
+
+<div id="portugal" class="destinations">
+  <div class="region"><div class="archetype">Stillness</div><div class="destination">Alentejo</div><div class="intro">Olive groves and golden quiet.</div></div>
+  <div class="region"><div class="archetype">Wonder</div><div class="destination">Sintra</div><div class="intro">Palaces rising from forest dreams.</div></div>
+  <div class="region"><div class="archetype">Connection</div><div class="destination">Porto</div><div class="intro">Tiles, wine, and riverside warmth.</div></div>
+  <div class="region"><div class="archetype">Transformation</div><div class="destination">Serra da Estrela</div><div class="intro">Climbs through snow and stone.</div></div>
+  <div class="region"><div class="archetype">Nostalgia</div><div class="destination">Évora</div><div class="intro">Roman echoes and slow time.</div></div>
+  <div class="region"><div class="archetype">Momentum</div><div class="destination">Lisbon</div><div class="intro">Trams, tiles, and coastal rhythm.</div></div>
+</div>
+
+<!-- MEXICO -->
+
+<div class="button" onclick="showMexico()">🇲🇽 Mexico</div>
+
+<div id="mexico" class="destinations">
+  <div class="region"><div class="archetype">Stillness</div><div class="destination">Isla Holbox</div><div class="intro">Car-free calm and turquoise hush.</div></div>
+  <div class="region"><div class="archetype">Wonder</div><div class="destination">Hierve el Agua</div><div class="intro">Petrified waterfalls and sacred springs.</div></div>
+  <div class="region"><div class="archetype">Connection</div><div class="destination">Oaxaca</div><div class="intro">Shared color and communal rhythm.</div></div>
+  <div class="region"><div class="archetype">Transformation</div><div class="destination">Copper Canyon</div><div class="intro">Deep gorges and shifting light.</div></div>
+  <div class="region"><div class="archetype">Nostalgia</div><div class="destination">San Miguel de Allende</div><div class="intro">Colonial charm and candlelit streets.</div></div>
+  <div class="region"><div class="archetype">Momentum</div><div class="destination">Mexico City</div><div class="intro">Layers of history in constant motion.</div></div>
+</div>
+
+
+<script>
+  function showScotland() {
+    hideAll();
+    document.getElementById("scotland").style.display = "block";
+  }
+
+  function showSwitzerland() {
+    hideAll();
+    document.getElementById("switzerland").style.display = "block";
+  }
+
+  function showGermany() {
+    hideAll();
+    document.getElementById("germany").style.display = "block";
+  }
+
+  function showPortugal() {
+    hideAll();
+    document.getElementById("portugal").style.display = "block";
+  }
+
+  function showMexico() {
+    hideAll();
+    document.getElementById("mexico").style.display = "block";
+  }
+
+  function showJapan() {
+    hideAll();
+    document.getElementById("japan").style.display = "block";
+  }
+
+  function showIndia() {
+    hideAll();
+    document.getElementById("india").style.display = "block";
+  }
+
+  function showSouthKorea() {
+    hideAll();
+    document.getElementById("southkorea").style.display = "block";
+  }
+
+  function hideAll() {
+    document.getElementById("scotland").style.display = "none";
+    document.getElementById("switzerland").style.display = "none";
+    document.getElementById("germany").style.display = "none";
+    document.getElementById("portugal").style.display = "none";
+    document.getElementById("mexico").style.display = "none";
+    document.getElementById("japan").style.display = "none";
+    document.getElementById("india").style.display = "none";
+    document.getElementById("southkorea").style.display = "none";
+  }
+
+</script>
+
+<br>
+    </div>
+   
+</section>
+
+
+ <div class="card">
+     <h2>🪐
+ Carry<em> LightYears</em> </h2>
+
+<p><b>Capsule:</b><em> Not packed. Composed.</em></p>
+
+<ul>
+  <li>🗺️ Map</li>
+  <li>📜 Guidebook</li>
+  <li>🧳 Travel essentials</li>
+  <li>📦 Symbolic object</li>
+</ul>
+
+<p><em>~ Open slowly.</em><br>
+It waits.<br>
+It listens.<br>
+It carries.</p>
+
+<p><strong>Not a product.</strong><br>
+A beginning.<br>
+Enough to move you.<br>
+Nothing more.<br>
+The rest is yours to unfold.</p>
+
+<br>
+</div>
+   
+
+<div class="card">
+<section id="categories">
+  <h2>🧩 Find Your Fit</h2>
+
+<b><em>LightYears</em></b> moves with feelings—and adapts to your rhythm, your senses, and your circle. Whether you travel <b> solo,</b> as a <b> duo, </b> with<b> friends, </b> or as a<b> family, </b>each tier offers emotionally attuned experiences and capsule kits designed to resonate with <b> how you move </b>through the world—and<b> who moves with you.</b>
+
+
+
+<center>
+
+ <div class="card">
+    
+<!-- SOLO -->
+<div class="capsule-button" onclick="showSolo()"> Solo </div>
+
+<div id="solo" class="destinations">
+    <div class="region">
+      <div class="destination">Stargazer</div>
+      <div class="intro">For those who travel by starlight and silence. </div>
+  </div>
+
+
+    <div class="region">
+      <div class="destination">pathweaver</div>
+      <div class="intro">Where touch and sound guide the journey.</div>
+  </div>
+
+</div>
+
+<!-- DUO -->
+<div class="capsule-button" onclick="showDuo()"> Duo </div>
+
+<div id="duo" class="destinations">
+    <div class="region">
+      <div class="destination">Pathfinder</div>
+      <div class="intro">Two hearts, one mythic map.</div>
+    </div>
+ 
+    <div class="region">
+      <div class="destination">Stargazer</div>
+      <div class="intro">For those who travel by starlight and silence. </div>
+  </div>
+
+</div>
+
+<br><br>
+
+<!-- FRIENDS -->
+<div class="capsule-button" onclick="showFriends()"> Friends </div>
+
+<div id="friends" class="destinations">
+    <div class="region">
+      <div class="destination">Sojourner</div>
+      <div class="intro">A rhythm of many footsteps, one shared pulse.</div>
+  </div>
+
+
+    <div class="region">
+      <div class="destination">Pathfinder</div>
+      <div class="intro">Two hearts, one mythic map.</div>
+    </div>
+
+</div>
+
+
+
+<!-- FAMILY -->
+<div class="capsule-button" onclick="showFamily()"> Family </div>
+
+<div id="family" class="destinations">
+    <div class="region">
+      <div class="destination">pathweaver</div>
+      <div class="intro">Where touch and sound guide the journey.</div>
+  </div>
+
+
+     <div class="region">
+     <div class="destination">Sojourner</div>
+      <div class="intro">A rhythm of many footsteps, one shared pulse.</div>
+  </div>
+
+</div>
+</center>
+
+<br>
+
+<script>
+  function showSolo() {
+    hideAll();
+    document.getElementById("solo").style.display = "block";
+  }
+
+ function showDuo() {
+    hideAll();
+    document.getElementById("duo").style.display = "block";
+  }
+
+ function showFriends() {
+    hideAll();
+    document.getElementById("friends").style.display = "block";
+  }
+
+ function showFamily() {
+    hideAll();
+    document.getElementById("family").style.display = "block";
+  }
+
+
+ function hideAll() {
+    document.getElementById("solo").style.display = "none";
+    document.getElementById("duo").style.display = "none";
+    document.getElementById("friends").style.display = "none";
+    document.getElementById("family").style.display = "none";
+    }
+
+</script>
+
+</section>
+</div>
+
+
+
+<div class="card">
+ <h3> 🗝️ Connect with <em>LightYears</em></h3>
+      <div style="text-align:center; margin-top:2em;">
+  <p><em>To continue your journey:</em></p>
+  <img src="images\Qr.png" alt="QR code to LightYears App" width="160" height="160">
+<br>
+  <p><small>Scan to open the <em> LightYears </em> App and complete your bookings.</p>
+  </small></p>  <br><br>
+</div>
+    </div>
+
+
+  </div>
+</div>
+
+<br>
+<section id="contact">
+<div class="container">
+
+    <!-- Contact Form -->
+    <form class="contact-form" action="#" method="post">
+
+
+      <h2>Send a Message Across the Stars</h2>
+
+<br>
+
+      <label for="name">Your Name</label>
+      <input type="text" id="name" name="name" required>
+
+      <label for="email">Email Address</label>
+      <input type="email" id="email" name="email" required>
+
+      <label for="message">Your Message</label>
+      <textarea id="message" name="message" rows="7" required></textarea>
+
+<br>
+
+<label><input type="checkbox" name="newsletter"> Send me mythic Updates and capsule whispers</label>
+
+<br>
+      <button type="submit">Send Message</button>
+    </form>
+
+
+
+    <!-- FAQ Section -->
+    <div class="faq">
+      <h2>Frequently Asked Questions</h2>
+
+<br>
+
+      <div class="faq-item">
+        <h3>What is LightYears Capsule?</h3>
+        <p>A curated bundle of sensory tools, poetic maps, and travel essentials—designed to evoke your archetype and guide your journey.</p>
+      </div>
+
+      <div class="faq-item">
+        <h3>Can I travel without booking flights or stays?</h3>
+        <p>Yes. Every tier offers emotional and mythic guidance. Flights and stays are optional add-ons—you choose your path.</p>
+      </div>
+
+      <div class="faq-item">
+        <h3>What makes Pathweaver different?</h3>
+        <p>Pathweaver is audio-first and tactile. It’s crafted for visually impaired travelers, with textured maps, narrated guides, and sensory capsules.</p>
+      </div>
+
+      <div class="faq-item">
+        <h3>Can I switch tiers later?</h3>
+        <p>Yes. Your journey may evolve, and so can your tier. We honor transformation.</p>
+      </div>
+
+      <div class="faq-item">
+        <h3>Can I gift a capsule or subscription?</h3>
+        <p>Absolutely. Gifting is available for all tiers. You can send a capsule with a personal note, like a message in a bottle.</p>
+      </div>
+
+      <div class="faq-item">
+        <h3>Is LightYears accessible for blind or low-vision users?</h3>
+        <p>Yes. Pathweaver tier is designed with audio-first and tactile experiences. We’re expanding accessibility across all tiers.</p>
+      </div>
+    </div>
+  </div>
+
+</section>
+
+
+<div class="footer">
+
+  <p>© LightYears 2025. All journeys begin with clarity.</p>
+  <p>Need help? Email us at <a href="mailto:support@lightyears.world" style="color: #AFD6FC;">support@lightyears.world</a>
+
+
+</p>
+</div>
+
+</body>
+</html>
+
+
